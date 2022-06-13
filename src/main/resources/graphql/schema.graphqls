@@ -1,0 +1,43 @@
+# The Root Query for the application
+type Query {
+    lists: [ShoppingList]!
+    products: [Product]!
+    productsByCategory(category: String!): [Product]!
+    listById(id: ID!): ShoppingList
+    itemById(id: ID!): ShoppingListItem
+    productById(id: ID!): Product
+    itemsOfList(listId: ID!): [ShoppingListItem]!
+}
+
+# The Root Mutation for the application
+type Mutation {
+    createList(name: String!, description: String) : ShoppingList!
+    deleteList(id: ID!): Boolean
+
+    addItem(listId: ID!, quantity: Float!, productId: ID!) : ShoppingList!
+    removeItem(listId: ID!, itemId: ID!) : ShoppingList!
+
+    createProduct(name: String!, description: String, price: Float!, categories: [String]) : Product!
+    deleteProduct(id: ID!): Boolean
+}
+
+type ShoppingList {
+    id: ID
+    name: String!
+    totalValue: Float
+    items: [ShoppingListItem]
+}
+
+type ShoppingListItem {
+    id: ID
+    quantity: Float
+    product: Product!
+}
+
+type Product {
+    id: ID
+    name: String!
+    description: String
+    categories: [String]
+}
+

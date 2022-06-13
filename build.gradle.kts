@@ -33,6 +33,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-graphql")
 
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.apache.logging.log4j:log4j-api-kotlin:1.1.0")
@@ -60,6 +61,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
 
+	testImplementation("org.springframework.graphql:spring-graphql-test")
 	testImplementation("org.springframework.security:spring-security-test")
 	testImplementation("org.testcontainers:junit-jupiter")
 	testImplementation("org.testcontainers:postgresql")

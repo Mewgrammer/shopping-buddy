@@ -12,13 +12,18 @@ spring:
     user: ${db_user}
     password: ${db_password}
     enabled: false
+  graphql:
+    graphiql:
+      enabled: true
+    schema:
+      printer:
+        enabled: true
 server:
   port: ${port}
 
 management:
   server:
     port: ${management_port}
-  endpoints.web.exposure.include: openapi,swagger-ui
   endpoint:
     health:
       enabled: true
@@ -26,6 +31,13 @@ management:
     enabled-by-default: false
     web:
       base-path: "/"
+      exposure:
+        include:
+          - openapi
+          - swagger-ui
+          - health
+          - metrics
+          - info
 
 springdoc:
   use-management-port: true

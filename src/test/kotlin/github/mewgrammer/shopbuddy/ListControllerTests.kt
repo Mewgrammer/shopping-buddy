@@ -2,9 +2,10 @@ package github.mewgrammer.shopbuddy
 
 import github.mewgrammer.shopbuddy.api.controller.ListController
 import github.mewgrammer.shopbuddy.testcontainer.TestContainerBaseTest
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic
 import org.springframework.test.web.servlet.get
 
 class ListControllerTests : TestContainerBaseTest() {

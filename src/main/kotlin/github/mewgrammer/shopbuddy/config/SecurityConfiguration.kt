@@ -3,11 +3,10 @@ package github.mewgrammer.shopbuddy.config
 import github.mewgrammer.shopbuddy.security.model.Privilege
 import github.mewgrammer.shopbuddy.security.model.Role
 import org.springframework.context.annotation.Bean
-import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.context.annotation.Profile
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.core.GrantedAuthorityDefaults
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.core.userdetails.User
@@ -17,9 +16,9 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.web.cors.CorsConfiguration
 
-
+@Profile("!(local|test)")
 @EnableWebSecurity
-class WebSecurityConfiguration {
+class SecurityConfiguration {
 
     private val AUTH_WHITELIST = arrayOf( // -- Swagger UI v2
         "/actuator/health",

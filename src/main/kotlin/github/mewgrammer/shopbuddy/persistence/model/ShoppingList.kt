@@ -15,6 +15,9 @@ class ShoppingList(
     @Column
     var name: String,
 
+    @Column
+    var description: String,
+
     @OneToMany(mappedBy = "shoppingList", cascade = [CascadeType.PERSIST, CascadeType.REMOVE])
     val items: MutableList<ShoppingListItem> = mutableListOf()
 ) : AuditableEntity()
