@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: ${db_url}
+    username: ${db_user}
+    password: ${db_password}
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+  flyway:
+    url: ${db_url}
+    user: ${db_user}
+    password: ${db_password}
+    enabled: false
+server:
+  port: ${port}
+
+management:
+  server:
+    port: ${management_port}
+  endpoints.web.exposure.include: openapi,swagger-ui
+  endpoint:
+    health:
+      enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: "/"
+
+springdoc:
+  use-management-port: true
+  api-docs:
+    path: "/api-docs"
+  swagger-ui:
+    path: "/swagger-ui"
+  show-actuator: true

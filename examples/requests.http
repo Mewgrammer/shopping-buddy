@@ -1,0 +1,19 @@
+
+###
+# @name get all shopping lists
+GET http://{{host}}:{{port}}/api/list
+Authorization: Basic {{user}} {{password}}
+
+
+###
+# @name create shopping list
+POST http://{{host}}:{{port}}/api/list
+Content-Type: application/json
+
+{
+  "name": "test"
+}
+
+###
+# @name get shopping list by ID
+GET http://{{host}}:${{port}}/api/list/{id}
