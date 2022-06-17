@@ -1,17 +1,12 @@
 package github.mewgrammer.shopbuddy.api.controller
 
 import github.mewgrammer.shopbuddy.api.model.ProductDto
-import github.mewgrammer.shopbuddy.api.model.ShoppingListDto
 import github.mewgrammer.shopbuddy.api.model.request.CreateProductDto
-import github.mewgrammer.shopbuddy.api.model.request.CreateShoppingListDto
 import github.mewgrammer.shopbuddy.persistence.mapping.ProductMapper
-import github.mewgrammer.shopbuddy.persistence.mapping.ShoppingListMapper
 import github.mewgrammer.shopbuddy.service.ProductService
-import github.mewgrammer.shopbuddy.service.ShoppingListService
-import org.springframework.graphql.data.method.annotation.Argument
-import org.springframework.stereotype.Controller
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import java.util.UUID
+import java.util.*
 import javax.validation.Valid
 
 @RestController
@@ -32,12 +27,14 @@ class ProductController(
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     fun create(@RequestBody @Valid dto: CreateProductDto): ProductDto {
         val created = service.create(mapper.toEntity(dto))
         return mapper.toDto(created)
     }
 
     @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteById(@PathVariable id: UUID) {
         service.deleteById(id)
     }

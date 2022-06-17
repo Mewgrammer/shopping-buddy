@@ -1,5 +1,6 @@
 package github.mewgrammer.shopbuddy.persistence.model
 
+import github.mewgrammer.shopbuddy.persistence.audit.AuditableEntity
 import javax.persistence.*
 
 
@@ -15,13 +16,13 @@ class Product(
     var name: String,
 
     @Column
-    var description: String,
+    var description: String? = null,
 
     @Column
     var price: Double,
 
     @OneToMany(mappedBy = "product", cascade = [CascadeType.PERSIST, CascadeType.REMOVE])
-    val shoppingListItems: MutableList<ShoppingListItem>,
+    var shoppingListItems: MutableList<ShoppingListItem>? = null,
 
     @ManyToMany
     @JoinTable(
@@ -29,6 +30,6 @@ class Product(
         joinColumns = [JoinColumn(name = "product_id")],
         inverseJoinColumns = [JoinColumn(name = "category_id")]
     )
-    val categories: List<ProductCategory> = emptyList()
+    val categories: MutableList<ProductCategory>? = null
 
-) : BaseEntity()
+) : AuditableEntity()

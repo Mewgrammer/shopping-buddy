@@ -12,5 +12,5 @@ class ProductCategory(
     var name: String,
 
     @ManyToMany(mappedBy = "categories")
-    val products: List<Product>
+    val products: MutableList<Product>? = null
 ) : BaseEntity()

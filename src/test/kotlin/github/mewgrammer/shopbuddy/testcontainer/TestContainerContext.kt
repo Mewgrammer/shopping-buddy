@@ -8,9 +8,9 @@ open class TestContainerContext : ApplicationContextInitializer<ConfigurableAppl
     override fun initialize(configurableApplicationContext: ConfigurableApplicationContext) {
         val runningContainer = PostgresTestContainer()
         TestPropertyValues.of(
-            "spring.datasource.url=" + runningContainer.getJdbcUrl(),
-            "spring.datasource.username=" + runningContainer.getUsername(),
-            "spring.datasource.password=" + runningContainer.getPassword()
+            "spring.datasource.url=" + runningContainer.jdbcUrl,
+            "spring.datasource.username=" + runningContainer.username,
+            "spring.datasource.password=" + runningContainer.password
         ).applyTo(configurableApplicationContext.environment)
         runningContainer.start()
     }

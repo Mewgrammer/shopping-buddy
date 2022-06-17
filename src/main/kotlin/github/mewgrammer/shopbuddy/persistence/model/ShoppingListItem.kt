@@ -11,9 +11,9 @@ class ShoppingListItem(
 
     @ManyToOne
     @JoinColumn(name = "productId")
-    val product: Product?,
+    var product: Product? = null,
 
     @ManyToOne
     @JoinColumn(name = "shoppingListId")
-    val shoppingList: ShoppingList
+    var shoppingList: ShoppingList? = null
 ) : AuditableEntity()

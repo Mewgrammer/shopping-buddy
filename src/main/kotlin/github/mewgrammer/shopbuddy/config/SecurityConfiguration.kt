@@ -16,19 +16,14 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.web.cors.CorsConfiguration
 
-@Profile("!(local|test)")
+@Profile("!(local | test)")
 @EnableWebSecurity
 class SecurityConfiguration {
 
     private val AUTH_WHITELIST = arrayOf( // -- Swagger UI v2
         "/actuator/health",
-        "/swagger-resources",
-        "/swagger-resources/**",
-        "/configuration/ui",
-        "/configuration/security",
         "/swagger-ui.html",
-        "/webjars/**",
-        "/v3/api-docs/**",
+        "/api-docs/**",
         "/swagger-ui/**"
     )
 

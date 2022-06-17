@@ -17,7 +17,8 @@ class ProductCategoryService(
 
     fun getAll() = repository.findAll()
 
-    fun create(product: ProductCategory): ProductCategory = repository.save(product)
+    fun create(category: ProductCategory): ProductCategory = repository.save(category)
+    fun createAll(categories: List<ProductCategory>): List<ProductCategory> = repository.saveAll(categories)
 
     fun deleteById(id: UUID) = repository.deleteById(id)
 

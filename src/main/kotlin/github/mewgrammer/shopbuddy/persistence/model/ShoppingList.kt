@@ -16,7 +16,7 @@ class ShoppingList(
     var name: String,
 
     @Column
-    var description: String,
+    var description: String? = null,
 
     @OneToMany(mappedBy = "shoppingList", cascade = [CascadeType.PERSIST, CascadeType.REMOVE])
     val items: MutableList<ShoppingListItem> = mutableListOf()

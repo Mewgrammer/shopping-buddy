@@ -21,12 +21,23 @@ class ProductResolver(
     }
 
     @Named("categoryByName")
-    fun getById(name: String): ProductCategory {
+    fun getCategoryByName(name: String): ProductCategory {
         return categoryService.getByName(name)
     }
 
     @Named("categoriesByName")
-    fun getById(categoryNames: List<String>): List<ProductCategory> {
+    fun getCategoriesByName(categoryNames: List<String>): List<ProductCategory> {
         return categoryService.getByNames(*categoryNames.toTypedArray())
+    }
+
+    @Named("categoriesByNameCNE")
+    fun getCategoriesByNameCreateIfNotExists(categoryNames: List<String>): List<ProductCategory> {
+        val categories = categoryService.getByNames(*categoryNames.toTypedArray()).toMutableList()
+        val existingNames = categories.map { it.name }
+        val toCreate = categoryNames.filter { name -> !existingNames.contains(name) }
+        if (toCreate.isNotEmpty()) {
+            categories.addAll(categoryService.createAll(toCreate.map { ProductCategory(it) }))
+        }
+        return categories
     }
 }

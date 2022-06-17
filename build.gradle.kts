@@ -43,8 +43,9 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+    implementation("org.hamcrest:hamcrest:2.2")
 
-	val springDocVersion = "1.6.9"
+    val springDocVersion = "1.6.9"
 	implementation("org.springdoc:springdoc-openapi-ui:$springDocVersion")
 	implementation("org.springdoc:springdoc-openapi-webmvc-core:$springDocVersion")
 	implementation("org.springdoc:springdoc-openapi-security:$springDocVersion")

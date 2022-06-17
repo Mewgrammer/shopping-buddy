@@ -26,7 +26,9 @@ class ShoppingListService(
 
     fun addItem(listId: UUID, item: ShoppingListItem): ShoppingList {
         val list = getListById(listId)
-        list.items.add(item)
+        item.shoppingList = list
+        val createdItem = itemRepository.save(item)
+        list.items.add(createdItem)
         return listRepository.save(list)
     }
 
